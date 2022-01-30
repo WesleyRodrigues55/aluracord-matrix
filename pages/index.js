@@ -28,7 +28,7 @@ export default function Home() {
         
         <>
             <div className='box_image p-2'>
-                <Title>Bem vindo ao mundo sobrio</Title>
+                <Title>Bem vindo ao lado sombrio da força</Title>
                 <img src={username.length > 2 ? `https://github.com/${username}.png` : `/assets/img/error.gif`} 
                     className='image' style={{width: '180px', height: '180px'}}
                 />

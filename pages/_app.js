@@ -27,7 +27,7 @@ function GlobalStyle() {
             }
 
             body {
-                overflow-x: hidden;
+                overflow: hidden;
                 background: url('/assets/img/bannerStarWars.png');
                 background-size: cover;
                 background-repeat: no-repeat;
@@ -55,7 +55,7 @@ function GlobalStyle() {
                 margin: auto;
                 min-width: 320px;
                 max-width: 450px;
-                height: 480px
+                height: 520px
             }
 
             .content_chat {
@@ -66,7 +66,7 @@ function GlobalStyle() {
             }
 
             .box_image {
-                height: 290px
+                height: 330px
             }
 
             .image {

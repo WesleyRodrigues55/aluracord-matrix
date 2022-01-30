@@ -48,7 +48,7 @@ export default function PaginaChat() {
  
 
     const header = (
-        <div className='d-flex justify-content-between p-3 header'>
+        <div className='d-flex justify-content-between p-1 header'>
             <Title tag='h2'>Chat</Title>
             <a href='../' className='btn logout px-5 py-1'>
                 Sair
@@ -58,7 +58,7 @@ export default function PaginaChat() {
 
     const FormMensagem = (
         <form className='form d-flex justify-content-between align-items-center'>
-            <textarea rows={`3`} 
+            <textarea rows={`1`} 
                 type={`text`} placeholder='Digite sua mensagem' className='form-control w-100 py-3 input'
                 value={mensagem} 
                 onChange={(e) => {
@@ -91,7 +91,7 @@ export default function PaginaChat() {
     )
 
     const Chat = (
-        <div className='p-3 position-relative d-flex flex-column' style={{height: '75vh', width: '98vw',  flex: '1'}}>
+        <div className='p-3 position-relative d-flex flex-column' style={{height: '83vh', width: '98vw',  flex: '1'}}>
             <ul className='d-flex flex-column-reverse' style={{overflowY: 'scroll', flex: '1', textAlign: 'left', color: '#fff', padding: '0'}}>
                 {listaMensagens.map((mensagem) => {
                     return (
@@ -104,9 +104,12 @@ export default function PaginaChat() {
                                         <DateTime />
                                     </div>
                                 </div>
-                                <button className='btn excluir p-2' onClick={(e) => ApagarMensagem(e, mensagem.id, mensagem.de)} title='Excluir mensagem?'>
+                                {user == mensagem.de ? (<button className='btn excluir p-2' onClick={(e) => ApagarMensagem(e, mensagem.id, mensagem.de)} title='Excluir mensagem?'>
                                     <GoTrashcan />
                                 </button>
+                                ) : (
+                                    ''
+                                )}
                             </div>
                             <p className='m-2 p-2' style={{fontSize: '18px', wordBreak: 'break-all'}}>
                                 {mensagem.texto.startsWith(':sticker: ') ? (
@@ -128,7 +131,7 @@ export default function PaginaChat() {
     
     const ApagarMensagem = (e, msgId, msgDe) => {
         e.preventDefault();
-        if (user = msgDe) {
+        if (user == msgDe) {
             supabaseClient
                 .from('mensagens')
                 .delete()
