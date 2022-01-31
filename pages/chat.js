@@ -20,22 +20,13 @@ function Title(props) {
             <Tag>{props.children}</Tag>
             <style tag jsx>{`
                 ${Tag} {
-                    color: #fcdf2b
+                    color: #fcdf2b;
                 }
             `}</style>
         </>
     )
 
     return element;
-}
-
-function DateTime() {
-    const datetime = (
-        <Title tag='p' className='m-2'>
-            {(new Date().toLocaleDateString())}
-        </Title>
-    )
-    return datetime;
 }
 
 export default function PaginaChat() {
@@ -55,6 +46,12 @@ export default function PaginaChat() {
             </a>
         </div>
     );
+
+    const DateTime = (
+        <Title tag='h7' className='my-1' style={{padding: '50px'}}>
+            {(new Date().toLocaleDateString())}
+        </Title>
+    )
 
     const FormMensagem = (
         <form className='form d-flex justify-content-between align-items-center'>
@@ -111,8 +108,8 @@ export default function PaginaChat() {
                                 <div className='d-flex align-items-center'>
                                     <img src={`https://github.com/${mensagem.de}.png`} className='m-2 image_chat'/>
                                     <div className='mx-2'>
-                                        <Title tag='h6' className='m-2'>{mensagem.de}</Title>
-                                        <DateTime />
+                                        <Title tag='h6' className='my-1'>{mensagem.de}</Title>
+                                        {DateTime}
                                     </div>
                                 </div>
                                 {user == mensagem.de ? (<button className='btn excluir p-2' onClick={(e) => ApagarMensagem(e, mensagem.id, mensagem.de)} title='Excluir mensagem?'>

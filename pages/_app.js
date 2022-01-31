@@ -69,7 +69,7 @@ function GlobalStyle() {
                 background: rgba(0,0,0,0.9);
                 margin: auto;
                 min-width: 320px;
-                max-width: 450px;
+                max-width: 600px;
                 height: 520px
             }
 
