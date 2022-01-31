@@ -70,7 +70,7 @@ function GlobalStyle() {
                 margin: auto;
                 min-width: 320px;
                 max-width: 600px;
-                height: 520px
+                max-height: 620px
             }
 
             .content_chat {

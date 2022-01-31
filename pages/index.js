@@ -11,7 +11,8 @@ function Title(props) {
             <style tag jsx>{`
                 ${Tag} {
                     color: #fcdf2b;
-                    margin-bottom: 20px
+                    margin-bottom: 20px;
+                    font-size: 30px
                 }
             `}</style>
         </>

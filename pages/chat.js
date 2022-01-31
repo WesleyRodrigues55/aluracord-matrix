@@ -40,7 +40,7 @@ export default function PaginaChat() {
 
     const header = (
         <div className='d-flex justify-content-between p-1 header'>
-            <Title tag='h2'>Chat</Title>
+            <Title tag='h2' style={{fontSize: '30px'}}>Chat</Title>
             <a href='../' className='btn logout px-5 py-1'>
                 Sair
             </a>
