@@ -13,6 +13,7 @@
     "https://i.imgur.com/jA2Jmvl.gif?noredirect",
     "https://i.imgur.com/TRRvU3J.gif"
     ],
+    "soundMessage": "/sound/messageSound.mp3",
     "theme": {
         "colors": {
             "primary": {

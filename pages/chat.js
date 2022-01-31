@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createClient } from '@supabase/supabase-js';
+import appConfig from '../config.json';
 //icons
 import { GoTrashcan } from 'react-icons/go';
 import { RiSendPlaneFill } from 'react-icons/ri';
@@ -48,7 +49,7 @@ export default function PaginaChat() {
     );
 
     const DateTime = (
-        <Title tag='h7' className='my-1' style={{padding: '50px'}}>
+        <Title tag='h6' className='my-1' style={{padding: '50px'}}>
             {(new Date().toLocaleDateString())}
         </Title>
     )
@@ -194,6 +195,14 @@ export default function PaginaChat() {
                 setIsLoaded(true);
             });
         escutaNovaMensagem((NovaMensagem) => {
+            // if(user == NovaMensagem.de){
+            //     // let audio = new Audio(appConfig.soundMessage);
+            //     // audio.play();
+            //     console.log(NovaMensagem.de)
+            // }
+            let audio = new Audio(appConfig.soundMessage);
+            audio.play();
+            // console.log(audio.play())
             setListaMensagens((valorAtualDaLista) => {
                 return [
                     NovaMensagem,
