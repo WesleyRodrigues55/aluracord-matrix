@@ -58,7 +58,7 @@ export default function PaginaChat() {
 
     const FormMensagem = (
         <form className='form d-flex justify-content-between align-items-center'>
-            <textarea rows={`1`} 
+            <input
                 type={`text`} placeholder='Digite sua mensagem' className='form-control w-100 py-3 input'
                 value={mensagem} 
                 onChange={(e) => {
@@ -68,21 +68,32 @@ export default function PaginaChat() {
                 }}
                 onKeyPress={(e) => {
                     const clicado = e.key;
-                    if (clicado == 'Enter' && mensagem.length > 0) {
+                    
+                    if (clicado == 'Enter') {
                         e.preventDefault();
-                        NovaMensagem(mensagem, user);
+                        if (mensagem.length > 0) {
+                            NovaMensagem(mensagem, user);
+                        } else {
+                            window.alert('Insira uma mensagem!')
+                        }
                     }
                 }}
-            ></textarea> 
-            <ButtonSendSticker className='m-2'
+            />
+
+            <ButtonSendSticker className='m-2 stickers'
                 onStickerClick={(sticker) => {
                     NovaMensagem(`:sticker: ${sticker}`);
                 }}
             />
+
             <button type={`submit`} value={`Enviar`} className='btn send p-2 m-3' title='Enviar mensagem!'
-                onClick={(e) => {
+               onClick={(e) => {
                     e.preventDefault();
-                    NovaMensagem(mensagem);
+                    if (mensagem.length > 0) {
+                        NovaMensagem(mensagem);
+                    } else {
+                        window.alert('Insira uma mensagem!')
+                    }
                 }} 
             >
                 <RiSendPlaneFill />
@@ -91,7 +102,7 @@ export default function PaginaChat() {
     )
 
     const Chat = (
-        <div className='p-3 position-relative d-flex flex-column' style={{height: '83vh', width: '98vw',  flex: '1'}}>
+        <div className='p-3 position-relative d-flex flex-column' style={{height: '85vh', width: '98vw',  flex: '1'}}>
             <ul className='d-flex flex-column-reverse' style={{overflowY: 'scroll', flex: '1', textAlign: 'left', color: '#fff', padding: '0'}}>
                 {listaMensagens.map((mensagem) => {
                     return (
@@ -100,7 +111,7 @@ export default function PaginaChat() {
                                 <div className='d-flex align-items-center'>
                                     <img src={`https://github.com/${mensagem.de}.png`} className='m-2 image_chat'/>
                                     <div className='mx-2'>
-                                        <Title tag='h4' className='m-2'>{mensagem.de}</Title>
+                                        <Title tag='h6' className='m-2'>{mensagem.de}</Title>
                                         <DateTime />
                                     </div>
                                 </div>
@@ -197,7 +208,7 @@ export default function PaginaChat() {
     
     if (!isLoaded) {
         return (
-            <div className='box'  styleSheet={{display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: 'url(/assets/img/bannerStarWars.png)'}}>
+            <div className='box'  style={{display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: 'url(/assets/img/bannerStarWars.png)'}}>
                 <div className='box_content'>
                     <img src='/assets/img/load.gif' className='carregando' />
                 </div>
@@ -209,7 +220,7 @@ export default function PaginaChat() {
         return (
             <div className='box'>
                 <div className='box_content'>
-                    <div className='content_chat px-3 pt-5'>
+                    <div className='content_chat px-3 pt-3'>
                         <Title>Bem vindo(a) ao chat {user}!</Title>
                         {header}
                         {Chat}

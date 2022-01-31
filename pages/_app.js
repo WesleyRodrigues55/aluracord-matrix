@@ -33,6 +33,21 @@ function GlobalStyle() {
                 background-repeat: no-repeat;
             }
 
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+            
+            ::-webkit-scrollbar-track {
+                background:#333;
+                border-radius: 3px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background-color: #fcdf2b;
+                border-radius: 3px;
+                border: 2px solid #fcdf2b;
+            }
+
             .box {
                 display: table;
                 width: 100%;
@@ -85,7 +100,7 @@ function GlobalStyle() {
 
             .image_chat {
                 border-radius: 100%;
-                width: 50px
+                width: 40px
             }
 
             /* KEYFRAME LOAD */
@@ -129,6 +144,19 @@ function GlobalStyle() {
             .send:hover {
                 color: #fff;
             }
+
+            /* RETIRANDO OULINE ALL */
+            .send, .stickers{
+                border: unset
+            }
+
+            .stickers:focus,
+            .send:focus,
+            .excluir:focus {
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, .0);
+            }
+            
         `}</style>
     )
 }
