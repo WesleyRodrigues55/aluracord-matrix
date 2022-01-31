@@ -103,6 +103,10 @@ function GlobalStyle() {
                 width: 40px
             }
 
+            .hover_message:hover {
+                background: rgba(35,35,35,0.8);
+            }
+
             /* KEYFRAME LOAD */
 
 

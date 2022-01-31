@@ -6,6 +6,7 @@ import appConfig from '../config.json';
 //icons
 import { GoTrashcan } from 'react-icons/go';
 import { RiSendPlaneFill } from 'react-icons/ri';
+import { AiOutlineEdit } from 'react-icons/ai';
 //temp
 import { ButtonSendSticker } from '../src/components/ButtonSendSticker';
 
@@ -104,21 +105,25 @@ export default function PaginaChat() {
             <ul className='d-flex flex-column-reverse' style={{overflowY: 'scroll', flex: '1', textAlign: 'left', color: '#fff', padding: '0'}}>
                 {listaMensagens.map((mensagem) => {
                     return (
-                        <li style={{borderBottom: '1px solid #333'}} className='p-2' key={mensagem.id}>
+                        <li style={{borderBottom: '1px solid #333'}} className='p-2 hover_message' key={mensagem.id}>
                             <div className='d-flex justify-content-between align-items-center'>
                                 <div className='d-flex align-items-center'>
                                     <img src={`https://github.com/${mensagem.de}.png`} className='m-2 image_chat'/>
                                     <div className='mx-2'>
                                         <Title tag='h6' className='my-1'>{mensagem.de}</Title>
-                                        {mensagem.timestamp}
+                                        <Title tag='h6' className='my-1'>{mensagem.timestamp}</Title>
                                     </div>
                                 </div>
-                                {user == mensagem.de ? (<button className='btn excluir p-2' onClick={(e) => ApagarMensagem(e, mensagem.id, mensagem.de)} title='Excluir mensagem?'>
-                                    <GoTrashcan />
-                                </button>
-                                ) : (
-                                    ''
-                                )}
+                                <div className='botoes_acao'>
+                                    {user == mensagem.de ? (<><button className='btn excluir p-2' onClick={(e) => ApagarMensagem(e, mensagem.id, mensagem.de)} title='Excluir mensagem?'>
+                                        <GoTrashcan />
+                                    </button>
+                                    <button className='btn excluir p-2' onClick={(e)=> {e.preventDefault();window.alert('Em andamento...')}}><AiOutlineEdit /></button></>
+                                    ) : (
+                                        ''
+                                    )}
+                                    
+                                </div>
                             </div>
                             <p className='m-2 p-2' style={{fontSize: '18px', wordBreak: 'break-all'}}>
                                 {mensagem.texto.startsWith(':sticker: ') ? (
@@ -196,14 +201,8 @@ export default function PaginaChat() {
                 setIsLoaded(true);
             });
         escutaNovaMensagem((NovaMensagem) => {
-            // if(user == NovaMensagem.de){
-            //     // let audio = new Audio(appConfig.soundMessage);
-            //     // audio.play();
-            //     console.log(NovaMensagem.de)
-            // }
             let audio = new Audio(appConfig.soundMessage);
             audio.play();
-            // console.log(audio.play())
             setListaMensagens((valorAtualDaLista) => {
                 return [
                     NovaMensagem,
