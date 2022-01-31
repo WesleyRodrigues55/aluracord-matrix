@@ -47,10 +47,10 @@ export default function PaginaChat() {
             </a>
         </div>
     );
-
+    
     const DateTime = (
         <Title tag='h6' className='my-1' style={{padding: '50px'}}>
-            {(new Date().toLocaleDateString())}
+            {(new Date().toLocaleString())}
         </Title>
     )
 
@@ -110,7 +110,7 @@ export default function PaginaChat() {
                                     <img src={`https://github.com/${mensagem.de}.png`} className='m-2 image_chat'/>
                                     <div className='mx-2'>
                                         <Title tag='h6' className='my-1'>{mensagem.de}</Title>
-                                        {DateTime}
+                                        {mensagem.timestamp}
                                     </div>
                                 </div>
                                 {user == mensagem.de ? (<button className='btn excluir p-2' onClick={(e) => ApagarMensagem(e, mensagem.id, mensagem.de)} title='Excluir mensagem?'>
@@ -169,7 +169,8 @@ export default function PaginaChat() {
     function NovaMensagem(novaMensagem) {
         const msg = {
             de: user,
-            texto: novaMensagem
+            texto: novaMensagem,
+            timestamp: new Date().toLocaleString(),
         }
         supabaseClient
             .from('mensagens')
