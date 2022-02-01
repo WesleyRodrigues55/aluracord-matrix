@@ -1,4 +1,4 @@
-"#Aluracord em uma galáxia, tão tão distante"
+"#Aluracord muito tempo atrás em uma galáxia muito distante"
 <img src="/.github/img1.png">
 <img src="/.github/img2.png">
 <img src="/.github/img3.png">
